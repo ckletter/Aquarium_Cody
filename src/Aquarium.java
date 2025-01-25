@@ -12,12 +12,18 @@ import java.awt.event.*;
  */
 public class Aquarium implements ActionListener {
     private AquariumView window;
-    private final int NUM_FISH = 20;
+    private final int NUM_FISH = 2000;
     private static final int SLEEP_TIME = 110;
     private Fish[] fishes;
     public Aquarium() {
         // Initialize the View, then create all the Fish:
         // TODO: Write the Aquarium constructor.
+        fishes = new Fish[NUM_FISH];
+        window = new AquariumView(this);
+        for (int i = 0; i < NUM_FISH; i++)
+        {
+            fishes[i] = new Fish(window);
+        }
     }
 
     /**
@@ -31,6 +37,13 @@ public class Aquarium implements ActionListener {
      */
     public void actionPerformed(ActionEvent e) {
         // TODO: Write the actionPerformed method.
+        for (Fish fish : fishes)
+        {
+            fish.swim();
+            fish.bounce();
+        }
+        // Update the window.
+        window.repaint();
     }
 
     public Fish[] getFishes() {

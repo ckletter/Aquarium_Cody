@@ -21,7 +21,10 @@ public class AquariumView extends JFrame {
 
         // Initialize instance variables.
         // TODO: initialize the View's instance variables.
+        aquariumImage = new ImageIcon("Resources/bubbles.jpg").getImage();
+        fishImages = new Image[2];
 
+        this.a = a;
         // Setup the window and the buffer strategy.
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("The Aquarium");
@@ -58,5 +61,11 @@ public class AquariumView extends JFrame {
      */
     public void myPaint(Graphics g) {
         // TODO: Write the paint method.
+        g.setColor(Color.white);
+        g.drawImage(aquariumImage, 0, 0, this);
+        for (Fish fish : a.getFishes())
+        {
+            fish.draw(g);
+        }
     }
 }
